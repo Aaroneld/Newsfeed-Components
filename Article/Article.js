@@ -112,3 +112,75 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+function articleCreator(obj){
+
+  div = document.createElement("div")
+  div.classList.add("article");
+  
+
+  title = document.createElement("h2");
+  title.textContent = obj["title"];
+
+  paragraph1 = document.createElement("p");
+  paragraph2 = document.createElement("p");
+  paragraph3 = document.createElement("p");
+  dateP = document.createElement("p");
+
+  dateP.textContent = obj["date"];
+  dateP.classList.add(obj["date"].replace(/\s+/g, '-').toLowerCase());
+
+  paragraph1.textContent = obj["firstParagraph"];
+  paragraph2.textContent = obj["secondParagraph"];
+  paragraph3.textContent = obj["thirdParagraph"];
+
+  span = document.createElement("span");
+  span.classList.add("expandButton");
+  span.textContent = "Expand/Close";
+
+  span.addEventListener('click', e => {
+
+    if (div.classList.contains("article-open")){
+      e.target.parentElement.classList.remove("article-open");
+    }
+    else{
+      e.target.parentElement.classList.add("article-open");
+    }
+      
+  });
+
+  div.appendChild(title);
+  div.appendChild(dateP);
+  div.appendChild(paragraph1);
+  div.appendChild(paragraph2);
+  div.appendChild(paragraph3);
+  div.appendChild(span);
+
+  return div;
+
+}
+
+let articles = document.querySelector(".articles");
+
+data.push({
+  title: 'I Thought I knew What I was Talking About',
+  date: 'Sept 10, 2019',
+  firstParagraph: `But I Didn't But I Didn't But I Didn't But I Didn't But I Didn't But I Didn't But I Didn't But I Didn't But I Didn't
+          But I Didn't But I Didn't But I Didn't But I Didn't But I Didn't But I Didn'tBut I Didn'tBut I Didn'tBut I Didn'tBut I Didn'tBut I Didn't
+          But I Didn'tBut I Didn'tBut I Didn'tBut I Didn'tBut I Didn'tBut I Didn'tBut I Didn't `,
+
+  secondParagraph:  `But I Didn't But I Didn't But I Didn't But I Didn't But I Didn't But I Didn't But I Didn't But I Didn't But I Didn't
+          But I Didn't But I Didn't But I Didn't But I Didn't But I Didn't But I Didn'tBut I Didn'tBut I Didn'tBut I Didn'tBut I Didn'tBut I Didn't
+          But I Didn'tBut I Didn'tBut I Didn'tBut I Didn'tBut I Didn'tBut I Didn'tBut I Didn't `,
+
+  thirdParagraph:   `But I Didn't But I Didn't But I Didn't But I Didn't But I Didn't But I Didn't But I Didn't But I Didn't But I Didn't
+         But I Didn't But I Didn't But I Didn't But I Didn't But I Didn't But I Didn'tBut I Didn'tBut I Didn'tBut I Didn'tBut I Didn'tBut I Didn't
+         But I Didn'tBut I Didn'tBut I Didn'tBut I Didn'tBut I Didn'tBut I Didn'tBut I Didn't `
+
+});
+
+data.forEach(element => {
+
+  articles.appendChild(articleCreator(element))
+});
+
