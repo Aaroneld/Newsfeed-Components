@@ -140,13 +140,7 @@ function articleCreator(obj){
 
   span.addEventListener('click', e => {
 
-    if (div.classList.contains("article-open")){
-      e.target.parentElement.classList.remove("article-open");
-    }
-    else{
-      e.target.parentElement.classList.add("article-open");
-    }
-      
+      e.target.parentElement.classList.toggle("article-open");     
   });
 
   div.appendChild(title);

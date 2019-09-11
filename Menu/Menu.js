@@ -71,13 +71,7 @@ menuButton = document.querySelector(".menu-button");
 
 menuButton.addEventListener('click', e =>{
 
-  if(e.target.firstChild.classList.contains("menu--open")){
-    e.target.firstChild.classList.remove("menu--open");
-  }
-  else{
-    e.target.firstChild.classList.add("menu--open");
-  }
-
+    e.target.firstChild.classList.toggle("menu--open");
 })
 
 menuButton.appendChild(menuCreator(menuItems));
